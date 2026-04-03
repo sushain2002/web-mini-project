@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nimble-donut-f3938b.netlify.app/sitemap.xml
