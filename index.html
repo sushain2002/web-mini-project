@@ -1,251 +1,225 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Zomato Style Analytics UI</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zomato Style Analytics UI</title>
+
+<!-- Google Font -->
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<!-- 🔥 GOOGLE ANALYTICS (YOUR ID ADDED) -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LYCSYVBK3Q"></script>
+
 <script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', 'G-LYCSYYBK3Q');
+gtag('config', 'G-LYCSYVBK3Q');
 </script>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Poppins", sans-serif;
-      }
-      body {
-        background: #fafafa;
-      }
 
-      header {
-        background: #e23744;
-        color: white;
-        padding: 20px 40px;
-        font-size: 24px;
-        font-weight: 600;
-      }
+<!-- Chart.js -->
 
-      .hero {
-        background: url("https://images.unsplash.com/photo-1504674900247-0877df9cc836")
-          center/cover;
-        height: 300px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        color: white;
-        text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-      }
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-      .hero h1 {
-        font-size: 40px;
-      }
-      .hero input {
-        padding: 12px;
-        width: 300px;
-        border: none;
-        border-radius: 8px;
-        margin-top: 10px;
-      }
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{background:#fafafa}
 
-      .container {
-        padding: 40px;
-      }
+header{
+  background:#e23744;
+  color:white;
+  padding:20px 40px;
+  font-size:24px;
+  font-weight:600;
+}
 
-      .section-title {
-        font-size: 22px;
-        margin-bottom: 20px;
-        font-weight: 600;
-      }
+.hero{
+  background:url('https://images.unsplash.com/photo-1504674900247-0877df9cc836') center/cover;
+  height:300px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  color:white;
+}
 
-      .cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
-      }
+.hero input{
+  padding:12px;
+  width:300px;
+  border:none;
+  border-radius:8px;
+  margin-top:10px;
+}
 
-      .card {
-        background: white;
-        border-radius: 15px;
-        overflow: hidden;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        transition: 0.3s;
-      }
+.container{padding:40px}
 
-      .card:hover {
-        transform: translateY(-5px);
-      }
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
 
-      .card img {
-        width: 100%;
-        height: 150px;
-        object-fit: cover;
-      }
+.card{
+  background:white;
+  border-radius:15px;
+  overflow:hidden;
+  box-shadow:0 4px 12px rgba(0,0,0,0.1);
+  transition:0.3s;
+}
+.card:hover{transform:translateY(-5px)}
 
-      .card-content {
-        padding: 15px;
-      }
+.card img{
+  width:100%;
+  height:150px;
+  object-fit:cover;
+}
 
-      .card h3 {
-        margin-bottom: 5px;
-      }
+.card-content{padding:15px}
+.rating{color:#28a745;font-weight:600}
 
-      .rating {
-        color: #28a745;
-        font-weight: 600;
-      }
+button{
+  margin-top:10px;
+  padding:8px 12px;
+  border:none;
+  background:#e23744;
+  color:white;
+  border-radius:5px;
+  cursor:pointer;
+}
 
-      button {
-        margin-top: 10px;
-        padding: 8px 12px;
-        border: none;
-        background: #e23744;
-        color: white;
-        border-radius: 5px;
-        cursor: pointer;
-      }
+.analytics{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px;
+  margin-top:30px;
+}
 
-      .analytics {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 20px;
-        margin-top: 30px;
-      }
+.stat{
+  background:white;
+  padding:20px;
+  border-radius:12px;
+  text-align:center;
+  box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
 
-      .stat {
-        background: white;
-        padding: 20px;
-        border-radius: 12px;
-        text-align: center;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      }
+canvas{
+  margin-top:30px;
+  background:white;
+  padding:15px;
+  border-radius:10px;
+}
+</style>
 
-      canvas {
-        margin-top: 30px;
-        background: white;
-        padding: 15px;
-        border-radius: 10px;
-      }
-    </style>
-  </head>
+</head>
 
-  <body>
-    <header>Zomato UI Analytics Project</header>
+<body>
 
-    <section class="hero">
-      <h1>Discover Best Food</h1>
-      <input type="text" placeholder="Search for restaurants..." />
-    </section>
+<header>Zomato UI Analytics Project</header>
 
-    <div class="container">
-      <div class="section-title">Popular Restaurants</div>
+<section class="hero">
+<h1>Discover Best Food</h1>
+<input type="text" placeholder="Search restaurants...">
+</section>
 
-      <div class="cards">
-        <div class="card">
-          <img
-            src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092"
-          />
-          <div class="card-content">
-            <h3>Pizza Hub</h3>
-            <p class="rating">⭐ 4.5</p>
-            <button onclick="track('click')">View</button>
-            <button onclick="track('order')">Order</button>
-          </div>
-        </div>
+<div class="container">
 
-        <div class="card">
-          <img
-            src="https://images.unsplash.com/photo-1604908176997-431a2c1b3f6d"
-          />
-          <div class="card-content">
-            <h3>Biryani House</h3>
-            <p class="rating">⭐ 4.7</p>
-            <button onclick="track('click')">View</button>
-            <button onclick="track('order')">Order</button>
-          </div>
-        </div>
+<h2>Popular Restaurants</h2>
 
-        <div class="card">
-          <img
-            src="https://images.unsplash.com/photo-1550547660-d9450f859349"
-          />
-          <div class="card-content">
-            <h3>Burger Point</h3>
-            <p class="rating">⭐ 4.3</p>
-            <button onclick="track('click')">View</button>
-            <button onclick="track('order')">Order</button>
-          </div>
-        </div>
-      </div>
+<div class="cards">
 
-      <div class="section-title">Analytics Dashboard</div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092">
+<div class="card-content">
+<h3>Pizza Hub</h3>
+<p class="rating">⭐ 4.5</p>
+<button onclick="track('click')">View</button>
+<button onclick="track('order')">Order</button>
+</div>
+</div>
 
-      <div class="analytics">
-        <div class="stat">
-          <h2 id="clicks">0</h2>
-          <p>Clicks</p>
-        </div>
-        <div class="stat">
-          <h2 id="orders">0</h2>
-          <p>Orders</p>
-        </div>
-        <div class="stat">
-          <h2 id="conversion">0%</h2>
-          <p>Conversion</p>
-        </div>
-      </div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1604908176997-431a2c1b3f6d">
+<div class="card-content">
+<h3>Biryani House</h3>
+<p class="rating">⭐ 4.7</p>
+<button onclick="track('click')">View</button>
+<button onclick="track('order')">Order</button>
+</div>
+</div>
 
-      <canvas id="chart"></canvas>
-    </div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1550547660-d9450f859349">
+<div class="card-content">
+<h3>Burger Point</h3>
+<p class="rating">⭐ 4.3</p>
+<button onclick="track('click')">View</button>
+<button onclick="track('order')">Order</button>
+</div>
+</div>
 
-    <script>
-      let clicks = 0,
-        orders = 0;
+</div>
 
-      function track(type) {
-        clicks++;
-        document.getElementById("clicks").innerText = clicks;
+<h2 style="margin-top:40px;">Analytics Dashboard</h2>
 
-        if (type === "order") {
-          orders++;
-          document.getElementById("orders").innerText = orders;
-        }
+<div class="analytics">
+<div class="stat"><h2 id="clicks">0</h2><p>Clicks</p></div>
+<div class="stat"><h2 id="orders">0</h2><p>Orders</p></div>
+<div class="stat"><h2 id="conversion">0%</h2><p>Conversion</p></div>
+</div>
 
-        let conv = ((orders / clicks) * 100).toFixed(2);
-        document.getElementById("conversion").innerText = conv + "%";
+<canvas id="chart"></canvas>
 
-        updateChart();
-      }
+</div>
 
-      const ctx = document.getElementById("chart");
-      const chart = new Chart(ctx, {
-        type: "line",
-        data: {
-          labels: ["Clicks", "Orders"],
-          datasets: [
-            {
-              label: "Analytics",
-              data: [0, 0],
-              borderWidth: 2,
-            },
-          ],
-        },
-      });
+<script>
+let clicks = 0, orders = 0;
 
-      function updateChart() {
-        chart.data.datasets[0].data = [clicks, orders];
-        chart.update();
-      }
-    </script>
-  </body>
+function track(type){
+  clicks++;
+  document.getElementById("clicks").innerText = clicks;
+
+  if(type === "order"){
+    orders++;
+    document.getElementById("orders").innerText = orders;
+  }
+
+  let conv = ((orders/clicks)*100).toFixed(2);
+  document.getElementById("conversion").innerText = conv + "%";
+
+  // 🔥 GA4 EVENT TRACKING
+  if(typeof gtag !== "undefined"){
+    gtag('event', type, {
+      event_category: 'engagement',
+      event_label: 'food_app'
+    });
+  }
+
+  updateChart();
+}
+
+// Chart
+const ctx = document.getElementById('chart');
+const chart = new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ['Clicks','Orders'],
+    datasets: [{
+      label: 'Analytics Data',
+      data: [0,0],
+      borderWidth: 2
+    }]
+  }
+});
+
+function updateChart(){
+  chart.data.datasets[0].data = [clicks, orders];
+  chart.update();
+}
+</script>
+
+</body>
 </html>
